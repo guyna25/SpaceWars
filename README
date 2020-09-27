@@ -1,0 +1,63 @@
+guyna25
+
+
+
+
+=============================
+=      File description     =
+=============================
+SpaceShip.java - implements the SpaceShip abstract class.
+
+SpaceShipFactory.java - Class that loads the spaceships given to the SpaceWars class.
+
+Human.java - implements the Human controlled class.
+
+Basher.java - implements the Basher controlled class.
+
+Aggressive.java - implements the Aggresive controlled class.
+
+Runner - implements the Runner controlled class.
+
+Drunkard - implements the Drunkard controlled class.
+
+=============================
+=          Design           =
+=============================
+The main methodology of the implementation maximizes encapsulation and simplfying all APIS as much as possbile. I also
+wanted to make debugging as easy as possible so I tried to concentrate each 'job' that needs to get done in the game
+in one class, e.g, the job to update each ship's state is concentrated in the Spaceship class so if there's a problem
+with trying to fire you know it has something to do with the ship class and cannot be an outcome of this specific
+ship's sub class This is why the Spaceship abstract class has all the features a spaceship has, and the sub Spaceship
+classes only have methods that enact their specific character and ship design. This design makes it easy for users to
+implement changes to gameplay at the macro level, but also enables to make changes at the micro level such as ship image
+ or special abilities.
+ Extensibility - the spaceships implementation suffices this demand since you can add or remove features easily for
+ ships using override for doAction which ddictates the ship behaviour and can implement macro changes in the Spaceship
+ abstract class
+ –Modularity - all classes aren't dependent on each other, all their functions are held within themselves
+ this means each of them acn be used and regarded as an independent object with capabilites, this makes the design
+ modular
+ –Intuitiveness and understandability - All spaceships have similar features and the only thing that changes is their
+ look and behaviour, so one can understand how the code works by looking only at the correspondence between the
+ Spaceship abstract type and the game runner to understand how the program works.
+
+ Representation of the classes and their relation - I noticed most spaceships' type share more traits than not, so the
+ I used one abstract class they all extend. The only sub subclass is the special one as implementation of behaviour
+ that's different than what a spaceship would usually do requires well...have her not fly around like a spaceship but
+ rether do something else
+
+=============================
+=  Implementation details   =
+=============================
+The drunkard pilot moves between three awful stages of drunkness:
+1. spinning around and shooting since in his cockpit partying like its 2009 and he left the spaceship on rotation and
+shooting as it makes "sweet pretty glowy lights"
+2. trying to teleport. Sometimes succeding and sometimes accidentally turning the shield on. You know they say he was
+once a hero or something?
+3. driving in zig zag because he's drunk, obviously
+Each phase last a few seconds and the choice of phase each time is completly random (and there's no order or queue).
+
+The special ship's engine is busted so it doesn't fly around (except initial acceleration). Its an extension of the
+runner ship so it tries to since everytime a ship gets too close it turns on its shield. Every once in a while it tries
+to teleport so it'd wouldn't be a sitting duck, just a lame one. Also it shoots at the closest spaceship, because why
+not.
